@@ -6,7 +6,7 @@ function App() {
 	return (
 		<div>
 			<NavBar />
-			<ItemListConteiner />
+			<ItemListConteiner titulo={"CATALOGO PLANTAS"} />
 		</div>
 	);
 }
