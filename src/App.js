@@ -7,6 +7,7 @@ function App() {
 		<div>
 			<NavBar />
 			<ItemListConteiner titulo={"CATALOGO PLANTAS"} />
+			<ItemCount stock={"50"} initial={"1"} />
 		</div>
 	);
 }
