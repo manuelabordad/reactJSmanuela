@@ -4,20 +4,37 @@ import orquidea from "../images/orquidea.jpg";
 
 function ItemCount({ stock, initial, onAdd }) {
 	const [number, setNumber] = useState(1);
+
 	return (
-		<div className="card" style={{ width: "18rem" }}>
-			<img className="card-img-top" src={orquidea} alt="Card image cap" />
-			<div className="card-body">
-				<h5 className="card-title">ORQUIDEA</h5>
-				<button
-					type="button"
-					onClick={() => {
-						setNumber(number - 1);
-					}}
-				>
-					-
-				</button>
-				<input type="number" disabled value={number} />
+		<div>
+			<div className="card" style={{ width: "18rem" }}>
+				<img className="card-img-top" src={orquidea} alt="Card image cap" />
+				<div className="card-body">
+					<h5 className="card-title">ORQUIDEA</h5>
+					<button
+						type="button"
+						onClick={() => {
+							setNumber(number - 1);
+						}}
+					>
+						-
+					</button>
+					<input type="number" disabled value={number} />
+					<button
+						type="button"
+						onClick={() => {
+							setNumber(number + 1);
+						}}
+					>
+						+
+					</button>
+
+					<a href="#" className="btn btn-primary">
+						Agregar al carrito
+					</a>
+				</div>
+			</div>
+			{number < stock ? (
 				<button
 					type="button"
 					onClick={() => {
@@ -26,25 +43,10 @@ function ItemCount({ stock, initial, onAdd }) {
 				>
 					+
 				</button>
-
-				<a href="#" className="btn btn-primary">
-					Agregar al carrito
-				</a>
-			</div>
+			) : (
+				alert("No hay stock disponible")
+			)}
 		</div>
-		number > { stock } ? 
-		<button
-			type="button"
-			onClick={() => {
-				setNumber(number + 1);
-			}}
-		>
-			+
-		</button>
-	: 
-		alert("no hay stock suficiente ")
 	);
-	
-	
 }
 export default ItemCount;
