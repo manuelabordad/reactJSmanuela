@@ -1,7 +1,6 @@
 import React from "react";
 import localJson from "../JSON/localJson.json";
 import { useState, useEffect } from "react";
-import { element } from "prop-types";
 
 const [products, setProducts] = useState([]);
 
