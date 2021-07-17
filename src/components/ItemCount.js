@@ -13,18 +13,18 @@ function ItemCount({ stock, initial, onAdd }) {
 					<h5 className="card-title">ORQUIDEA</h5>
 					<button
 						type="button"
-						onClick={() => {
-							setNumber(number - 1);
-						}}
+						onClick={() => (number > 1 ? setNumber(number - 1) : { number })}
 					>
 						-
 					</button>
 					<input type="number" disabled value={number} />
 					<button
 						type="button"
-						onClick={() => {
-							setNumber(number + 1);
-						}}
+						onClick={() =>
+							number > stock
+								? setNumber(number + 1)
+								: alert("No hay stock disponible")
+						}
 					>
 						+
 					</button>
@@ -34,18 +34,6 @@ function ItemCount({ stock, initial, onAdd }) {
 					</a>
 				</div>
 			</div>
-			{number < stock ? (
-				<button
-					type="button"
-					onClick={() => {
-						setNumber(number + 1);
-					}}
-				>
-					+
-				</button>
-			) : (
-				alert("No hay stock disponible")
-			)}
 		</div>
 	);
 }

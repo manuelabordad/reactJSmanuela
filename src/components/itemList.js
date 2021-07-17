@@ -1,8 +1,7 @@
 import React from "react";
 import localJson from "../JSON/localJson.json";
 import { useState, useEffect } from "react";
-
-const [products, setProducts] = useState([]);
+import FunctionalComponent from "../components/itemList";
 
 const getProducts = async () => {
 	let ServerOnline = true;
@@ -20,17 +19,16 @@ const getProducts = async () => {
 };
 
 function ItemList({ items }) {
-	{
-		products.map((element) => {
-			return (
-				<FunctionalComponent
-					id={element.id}
-					nombre={element.nombre}
-					precio={element.precio}
-					imagen={element.img}
-				/>
-			);
-		});
-	}
+	products.map((element) => {
+		const [products, setProducts] = useState([]);
+		return (
+			<FunctionalComponent
+				id={element.id}
+				nombre={element.nombre}
+				precio={element.precio}
+				imagen={element.img}
+			/>
+		);
+	});
 }
 export default ItemList;
