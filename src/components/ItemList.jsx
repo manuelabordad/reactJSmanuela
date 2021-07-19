@@ -16,7 +16,7 @@ function ItemList(props) {
 		task.then((resolve) => {
 			setProductos(resolve);
 		});
-		(rej) => {
+		(reject) => {
 			console.log("error");
 		};
 	}, []);
