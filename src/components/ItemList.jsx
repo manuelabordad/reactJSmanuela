@@ -5,7 +5,7 @@ import localJson from "../JSON/localJson.json";
 function ItemList(props) {
 	const [productos, setProductos] = useState([]);
 	useEffect(() => {
-		const task = new promise((resolve, reject) => {
+		const task = new Promise((resolve, reject) => {
 			const data = localJson;
 			console.log(data);
 			setTimeout(() => {
@@ -13,23 +13,27 @@ function ItemList(props) {
 			}, 2000);
 		});
 
-		task.then((resolve) => {
-			setProductos(resolve);
-		});
-		(reject) => {
-			console.log("error");
-		};
+		task.then(
+			(resolve) => {
+				setProductos(resolve);
+			},
+			(reject) => {
+				console.log("error");
+			}
+		);
 	}, []);
 
 	return (
 		<div>
-			{productos.map((producto) => {
+			{productos.map((producto) => (
 				<Item
-					titulo={producto.nombre}
-					imagen={producto.img}
+					nombre={producto.nombre}
+					img={producto.img}
 					precio={producto.precio}
-				/>;
-			})}
+					stock={20}
+					initial={1}
+				/>
+			))}
 		</div>
 	);
 }
