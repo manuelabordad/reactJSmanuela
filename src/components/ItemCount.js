@@ -13,7 +13,7 @@ function ItemCount({ stock, initial, onAdd }) {
 					<h5 className="card-title">ORQUIDEA</h5>
 					<button
 						type="button"
-						onClick={() => (number > 1 ? setNumber(number - 1) : { number })}
+						onClick={() => (number > 0 ? setNumber(number - 1) : { number })}
 					>
 						-
 					</button>
@@ -21,7 +21,7 @@ function ItemCount({ stock, initial, onAdd }) {
 					<button
 						type="button"
 						onClick={() =>
-							number > stock
+							number < stock
 								? setNumber(number + 1)
 								: alert("No hay stock disponible")
 						}
