@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CartWidget from "../components/CartWidget";
 function NavBar(props) {
 	return (
@@ -23,24 +24,20 @@ function NavBar(props) {
 					<div className="collapse navbar-collapse" id="navbarNav">
 						<ul className="navbar-nav">
 							<li className="nav-item">
-								<a className="nav-link active" aria-current="page" href="#">
+								<Link className="nav-link active" aria-current="page">
 									Indice
-								</a>
+								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#">
-									Plantas interior
-								</a>
+								<Link className="nav-link active" aria-current="page">
+									Plantas
+								</Link>
 							</li>
+
 							<li className="nav-item">
-								<a className="nav-link" href="#">
-									Plantas exterior
-								</a>
-							</li>
-							<li className="nav-item">
-								<a className="nav-link" href="#">
-									Materas
-								</a>
+								<Link className="nav-link active" aria-current="page">
+									Carrito
+								</Link>
 							</li>
 						</ul>
 					</div>

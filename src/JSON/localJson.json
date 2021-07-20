@@ -3,24 +3,24 @@
 		"id": "1",
 		"nombre": "orquidea baby",
 		"precio": " COP $ 65.000 ",
-		"img": "images/orquideaBaby.jpg"
+		"img": "../images/orquideaBaby.jpg"
 	},
 	{
 		"id": "2",
 		"nombre": "suculenta ",
 		"precio": "  COP $ 20.000",
-		"img": "images/suculenta.jpg"
+		"img": "../images/suculenta.jpg"
 	},
 	{
 		"id": "3",
 		"nombre": "anturio  ",
 		"precio": "  COP  $45.000",
-		"img": "images/anturio.jpg"
+		"img": "../images/anturio.jpg"
 	},
 	{
 		"id": "4",
 		"nombre": "bonsai  ",
 		"precio": "  COP $ 62.000",
-		"img": "images/bonsai.jpg"
+		"img": " ../images/bonsai.jpg"
 	}
 ]

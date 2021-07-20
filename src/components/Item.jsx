@@ -1,15 +1,16 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function Item(producto, stock, initial, onAdd) {
+function Item({ stock, nombre, img, precio }) {
 	const [number, setNumber] = useState(1);
+
 	return (
 		<div>
 			<div className="card" style={{ width: "18rem" }}>
-				<img className="card-img-top" src={producto.img} alt="Card image cap" />
+				<img className="card-img-top" src={img} alt="Card image cap" />
 				<div className="card-body">
-					<h5 className="card-title">{producto.nombre}</h5>
-					<p>Precio {producto.precio}</p>
+					<h5 className="card-title">{nombre}</h5>
+					<p>Precio {precio}</p>
 					<button
 						type="button"
 						onClick={() => (number > 0 ? setNumber(number - 1) : { number })}

@@ -1,12 +1,17 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ItemListCont from "./components/ItemListCont";
+import NavBar from "./components/NavBar";
 
 function App() {
 	return (
 		<div>
-			<NavBar />
-			<ItemListCont titulo={"CATALOGO PLANTAS"} />
+			<BrowserRouter>
+				<NavBar />
+				<Switch>
+					<Route path="/" exact component={ItemListCont} />
+				</Switch>
+			</BrowserRouter>
 		</div>
 	);
 }
