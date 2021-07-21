@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Item from "../components/Item";
 import localJson from "../JSON/localJson.json";
 
+
 function ItemList(props) {
 	const [productos, setProductos] = useState([]);
 	useEffect(() => {

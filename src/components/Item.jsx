@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Plant from "../images/orquideaBaby.jpg";
 
 function Item({ stock, nombre, img, precio }) {
 	const [number, setNumber] = useState(1);
@@ -7,7 +8,7 @@ function Item({ stock, nombre, img, precio }) {
 	return (
 		<div>
 			<div className="card" style={{ width: "18rem" }}>
-				<img className="card-img-top" src={img} alt="Card image cap" />
+				<img className="card-img-top" src={Plant} alt="Card image cap" />
 				<div className="card-body">
 					<h5 className="card-title">{nombre}</h5>
 					<p>Precio {precio}</p>
