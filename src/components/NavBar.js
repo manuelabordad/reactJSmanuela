@@ -24,7 +24,7 @@ function NavBar(props) {
 					<div className="collapse navbar-collapse" id="navbarNav">
 						<ul className="navbar-nav">
 							<li className="nav-item">
-								<Link className="nav-link active" aria-current="page">
+								<Link to="/" className="nav-link active" aria-current="page">
 									Indice
 								</Link>
 							</li>
