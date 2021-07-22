@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Plant from "../images/orquideaBaby.jpg";
+import { Link } from "react-router-dom";
 
 function Item({ stock, nombre, img, precio }) {
 	const [number, setNumber] = useState(1);

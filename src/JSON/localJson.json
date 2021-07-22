@@ -3,24 +3,28 @@
 		"id": "1",
 		"nombre": "orquidea baby",
 		"precio": " COP $ 65.000 ",
-		"img": "../images/orquideaBaby.jpg"
+		"img": "../images/orquideaBaby.jpg",
+		"decripcion": "Es una de las plantas de interior más hermosas y sus flores perfectas y coloridas parecen salidas de otro planeta. Perfecta para sorprender a esa persona especial, iluminar cualquier rincón de tu casa, una hermosa adición para la oficina o el toque perfecto para tu espacio preferido en el mundo!"
 	},
 	{
 		"id": "2",
 		"nombre": "suculenta ",
 		"precio": "COP $ 20.000",
-		"img": "../images/suculenta.jpg"
+		"img": "../images/suculenta.jpg",
+		"descripcion": "Sus hermosas formas y colores las hacen muy llamativas y especiales, además son plantas que almacenan agua en sus tallos y hojas lo que hace que su mantenimiento sea muy sencillo! Son perfectas para regalar o decorar tus espacios e incluir naturaleza en tu vida. "
 	},
 	{
 		"id": "3",
 		"nombre": "anturio  ",
 		"precio": "COP  $45.000",
-		"img": "../images/anturio.jpg"
+		"img": "../images/anturio.jpg",
+		"descripcion": "La NASA determinó que esta planta es buenísima a la hora de filtrar las sustancias contaminantes, por eso es una de nuestras plantas purificadoras de aire favoritas! Sus hojas en forma de corazón son perfectas para enamorar"
 	},
 	{
 		"id": "4",
 		"nombre": "bonsai  ",
 		"precio": "COP $ 62.000",
-		"img": "../images/bonsai.jpg"
+		"img": "../images/bonsai.jpg",
+		"descripcion": "El Bonsai es símbolo de eternidad y representa un puente entre lo divino y humano. Según la tradición, quien conserva un árbol en maceta tiene asegurada la eternidad"
 	}
 ]

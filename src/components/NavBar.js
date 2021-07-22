@@ -29,7 +29,11 @@ function NavBar(props) {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link active" aria-current="page">
+								<Link
+									to="/categoria"
+									className="nav-link active"
+									aria-current="page"
+								>
 									Plantas
 								</Link>
 							</li>
