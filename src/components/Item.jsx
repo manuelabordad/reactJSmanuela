@@ -9,7 +9,9 @@ function Item({ stock, nombre, img, precio }) {
 	return (
 		<div>
 			<div className="card" style={{ width: "18rem" }}>
-				<img className="card-img-top" src={Plant} alt="Card image cap" />
+				<Link to="/Item/:id">
+					<img className="card-img-top" src={Plant} alt="Card image cap" />
+				</Link>
 				<div className="card-body">
 					<h5 className="card-title">{nombre}</h5>
 					<p>Precio {precio}</p>

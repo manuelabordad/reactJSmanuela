@@ -12,7 +12,7 @@ function App() {
 				<Switch>
 					<Route path="/" exact component={ItemListCont} />
 					<Route path="/categoria" exact component={ItemListCont} />
-					<Route path="/Item" exact component={ItemDetailConteiner} />
+					<Route path="/Item/:id" exact component={ItemDetailConteiner} />
 				</Switch>
 			</BrowserRouter>
 		</div>
