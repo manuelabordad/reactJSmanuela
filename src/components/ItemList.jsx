@@ -18,8 +18,9 @@ function ItemList(props) {
 			{productos.map((producto) => (
 				<Item
 					nombre={producto.nombre}
-					img={producto.img}
 					precio={producto.precio}
+					itemId={producto.id}
+					descripcion={producto.descripcion}
 					stock={20}
 					initial={1}
 				/>

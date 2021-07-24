@@ -6,11 +6,14 @@ import { useParams } from "react-router-dom";
 function ItemDetailConteiner() {
 	const [producto, setProducto] = useState([]);
 
+	const { id } = useParams();
+
 	const getItems = async () => {
 		const data = await fetch("../localJson.json");
 		const responseData = await data.json();
 		console.log("dataJSON", responseData);
-		setProducto(responseData);
+
+		setProducto(responseData.filter((product) => product.id === id)[0]);
 	};
 
 	useEffect(() => {
@@ -23,7 +26,8 @@ function ItemDetailConteiner() {
 				nombre={producto.nombre}
 				img={producto.img}
 				precio={producto.precio}
-				despcripcion={producto.descripcion}
+				descripcion={producto.descripcion}
+				itemId={producto.id}
 				stock={20}
 				initial={1}
 			/>

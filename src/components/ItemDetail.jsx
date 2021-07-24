@@ -14,7 +14,7 @@ function ItemDetail({ nombre, precio, descripcion, stock }) {
 					<div class="col">
 						<h1>{nombre}</h1> <br />
 						<h2>Precio : {precio}</h2> <br />
-						<h2>Descripcion: {descripcion}</h2> <br />
+						<p> {descripcion}</p> <br />
 						<button
 							type="button"
 							onClick={() => (number > 0 ? setNumber(number - 1) : { number })}

@@ -3,13 +3,13 @@ import { useState } from "react";
 import Plant from "../images/orquideaBaby.jpg";
 import { Link } from "react-router-dom";
 
-function Item({ stock, nombre, img, precio }) {
+function Item({ stock, nombre, precio, itemId }) {
 	const [number, setNumber] = useState(1);
 
 	return (
 		<div>
 			<div className="card" style={{ width: "18rem" }}>
-				<Link to="/Item/:id">
+				<Link to={`/Item/${itemId}`}>
 					<img className="card-img-top" src={Plant} alt="Card image cap" />
 				</Link>
 				<div className="card-body">
