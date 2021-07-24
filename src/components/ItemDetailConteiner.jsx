@@ -7,9 +7,9 @@ function ItemDetailConteiner() {
 	const [producto, setProducto] = useState([]);
 
 	const getItems = async () => {
-		const data = await fetch("./localJson.json");
+		const data = await fetch("../localJson.json");
 		const responseData = await data.json();
-		console.log("dataJSON", data);
+		console.log("dataJSON", responseData);
 		setProducto(responseData);
 	};
 

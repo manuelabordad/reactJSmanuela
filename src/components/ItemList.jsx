@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Item from "../components/Item";
-import localJson from "../../public/localJson.json";
 
 function ItemList(props) {
 	const [productos, setProductos] = useState([]);
+	const getProducts = async () => {
+		const dataTest = await fetch("../localJson.json");
+		const responseData = await dataTest.json();
+		console.log("dataJson", responseData);
+		setProductos(responseData);
+	};
 	useEffect(() => {
-		const task = new Promise((resolve, reject) => {
-			const data = localJson;
-			console.log(data);
-			setTimeout(() => {
-				resolve(data);
-			}, 2000);
-		});
-
-		task.then(
-			(resolve) => {
-				setProductos(resolve);
-			},
-			(reject) => {
-				console.log("error");
-			}
-		);
+		setTimeout(() => getProducts(), 2000);
 	}, []);
 
 	return (
