@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Item from "../components/Item";
 
-function ItemList(props) {
+function ItemList({ categoryId }) {
 	const [productos, setProductos] = useState([]);
-	const getProducts = async () => {
-		const dataTest = await fetch("../localJson.json");
+
+	const getProductsByCategoryId = async () => {
+		const dataTest = await fetch(`../product/byCategory/${categoryId}.json`);
 		const responseData = await dataTest.json();
-		console.log("dataJson", responseData);
+
 		setProductos(responseData);
 	};
 	useEffect(() => {
-		setTimeout(() => getProducts(), 2000);
-	}, []);
+		setTimeout(() => getProductsByCategoryId(), 2000);
+	}, [categoryId]);
 
 	return (
 		<div>

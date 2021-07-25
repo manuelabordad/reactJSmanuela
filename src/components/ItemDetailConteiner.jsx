@@ -9,9 +9,8 @@ function ItemDetailConteiner() {
 	const { id } = useParams();
 
 	const getItems = async () => {
-		const data = await fetch("../localJson.json");
+		const data = await fetch("../product/products.json");
 		const responseData = await data.json();
-		console.log("dataJSON", responseData);
 
 		setProducto(responseData.filter((product) => product.id === id)[0]);
 	};

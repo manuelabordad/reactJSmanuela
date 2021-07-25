@@ -30,37 +30,5 @@
 		"img": "../images/bonsai.jpg",
 		"descripcion": "El Bonsai es símbolo de eternidad y representa un puente entre lo divino y humano. Según la tradición, quien conserva un árbol en maceta tiene asegurada la eternidad. Por su parte, el jade es un amuleto de suerte símbolo del crecimiento y la renovación.",
 		"categoriaID": "1"
-	},
-	{
-		"id": "5",
-		"nombre": "Bromelia Soledo",
-		"precio": "COP $ 49.000",
-		"img": "../images/bonsai.jpg",
-		"descripcion": "Plantas muy llamativas por sus tallos y centros de colores que varían desde rojos intensos y naranjados hasta amarillos vivos. Sus flores son generalmente pequeñas y poco llamativas pero pueden llegar a durar muchos meses florecidas",
-		"categoriaID": "2"
-	},
-	{
-		"id": "6",
-		"nombre": " Sanguinaria",
-		"precio": "COP $ 15.000",
-		"img": "../images/bonsai.jpg",
-		"descripcion": "hermosa planta de flores rojas y moradas , perfecta para decorar y dar color a tu jardin.",
-		"categoriaID": "2"
-	},
-	{
-		"id": "7",
-		"nombre": "Croto ",
-		"precio": "COP $ 14.000",
-		"img": "../images/bonsai.jpg",
-		"descripcion": "planta de colores rojos y verdes, de una gran resistencia y faciles cuidados ",
-		"categoriaID": "2"
-	},
-	{
-		"id": "8",
-		"nombre": "Enredadera sarita ",
-		"precio": "COP $ 20.000",
-		"img": "../images/bonsai.jpg",
-		"descripcion": "enredadera de flores lilas que dan un toque delicado y hermoso",
-		"categoriaID": "2"
 	}
 ]

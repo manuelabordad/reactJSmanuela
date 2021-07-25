@@ -28,19 +28,24 @@ function NavBar(props) {
 									Indice
 								</Link>
 							</li>
+
 							<li className="nav-item">
 								<Link
-									to="/categoria"
+									to="/categoria/1"
 									className="nav-link active"
 									aria-current="page"
 								>
-									Plantas
+									Plantas de interior
 								</Link>
 							</li>
 
 							<li className="nav-item">
-								<Link className="nav-link active" aria-current="page">
-									Carrito
+								<Link
+									to="/categoria/2"
+									className="nav-link active"
+									aria-current="page"
+								>
+									Plantas de exterior
 								</Link>
 							</li>
 						</ul>
