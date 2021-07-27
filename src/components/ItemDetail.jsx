@@ -23,7 +23,6 @@ function ItemDetail({ nombre, precio, descripcion, stock }) {
 		}
 	};
 
-	console.log("readyToBuy", readyToBuy);
 	return (
 		<div>
 			<div className="container">
