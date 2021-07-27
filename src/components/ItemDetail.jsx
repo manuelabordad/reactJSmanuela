@@ -1,37 +1,50 @@
 import React from "react";
 import Plant from "../images/orquideaBaby.jpg";
 import { useState } from "react";
+import ItemCount from "./ItemCount";
 
 function ItemDetail({ nombre, precio, descripcion, stock }) {
-	const [number, setNumber] = useState(1);
+	const [count, setCount] = useState(0);
+	const [readyToBuy, setReadyToBuy] = useState(false);
+
+	const onAdd = () => {
+		if (count < stock) {
+			setCount(count + 1);
+			setReadyToBuy(false);
+		} else {
+			alert("No hay stok disponible");
+		}
+	};
+
+	const onDecrease = () => {
+		if (count > 0) {
+			setCount(count - 1);
+			setReadyToBuy(false);
+		}
+	};
+
+	console.log("readyToBuy", readyToBuy);
 	return (
 		<div>
-			<div class="container">
-				<div class="row">
-					<div class="col">
+			<div className="container">
+				<div className="row">
+					<div className="col">
 						<img width="500px" height="500px" src={Plant} />
 					</div>
-					<div class="col">
+					<div className="col">
 						<h1>{nombre}</h1> <br />
 						<h2>Precio : {precio}</h2> <br />
 						<p> {descripcion}</p> <br />
-						<button
-							type="button"
-							onClick={() => (number > 0 ? setNumber(number - 1) : { number })}
-						>
-							-
+						<ItemCount
+							initial={1}
+							onAdd={onAdd}
+							onDecrease={onDecrease}
+							count={count}
+						/>
+						<button disabled={count < 1} onClick={() => setReadyToBuy(true)}>
+							Agregar al carrito
 						</button>
-						<input type="number" disabled value={number} />
-						<button
-							type="button"
-							onClick={() =>
-								number < stock
-									? setNumber(number + 1)
-									: alert("No hay stock disponible")
-							}
-						>
-							+
-						</button>
+						<button disabled={!readyToBuy}>Termina tu compra</button>
 					</div>
 				</div>
 			</div>
