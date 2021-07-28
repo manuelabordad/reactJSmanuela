@@ -2,27 +2,16 @@ import React from "react";
 import Plant from "../images/orquideaBaby.jpg";
 import { useState } from "react";
 import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
 
 function ItemDetail({ nombre, precio, descripcion, stock }) {
-	const [count, setCount] = useState(0);
 	const [readyToBuy, setReadyToBuy] = useState(false);
+	const [addCartButtonState, setAddCartButtonState] = useState(false);
 
-	const onAdd = () => {
-		if (count < stock) {
-			setCount(count + 1);
-			setReadyToBuy(false);
-		} else {
-			alert("No hay stok disponible");
-		}
+	const onCountChange = (count) => {
+		console.log("count", count);
+		setAddCartButtonState(count > 0);
 	};
-
-	const onDecrease = () => {
-		if (count > 0) {
-			setCount(count - 1);
-			setReadyToBuy(false);
-		}
-	};
-
 	return (
 		<div>
 			<div className="container">
@@ -36,14 +25,19 @@ function ItemDetail({ nombre, precio, descripcion, stock }) {
 						<p> {descripcion}</p> <br />
 						<ItemCount
 							initial={1}
-							onAdd={onAdd}
-							onDecrease={onDecrease}
-							count={count}
+							stock={20}
+							setReadyToBuy={setReadyToBuy}
+							onCountChange={onCountChange}
 						/>
-						<button disabled={count < 1} onClick={() => setReadyToBuy(true)}>
+						<button
+							disabled={!addCartButtonState}
+							onClick={() => setReadyToBuy(true)}
+						>
 							Agregar al carrito
 						</button>
-						<button disabled={!readyToBuy}>Termina tu compra</button>
+						<Link>
+							<button disabled={!readyToBuy}>Termina tu compra</button>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -1,17 +1,25 @@
 import React from "react";
+import { useState } from "react";
 
-function ItemCount({ stock, initial, onAdd, onDecrease, count }) {
-	// const [product, setProduct] = useState(1);
+function ItemCount({ stock, setReadyToBuy, onCountChange }) {
+	const [count, setCount] = useState(0);
+	const onAdd = () => {
+		if (count < stock) {
+			onCountChange(count + 1);
+			setCount(count + 1);
+			setReadyToBuy(false);
+		} else {
+			alert("No hay stok disponible");
+		}
+	};
 
-	// const onDecrease = () => {
-	// 	product > 0 ? setProduct(product - 1) : setProduct(product);
-	// };
-	// const onAdd = () => {
-	// 	console.log("add");
-	// 	product < stock
-	// 		? setProduct(product + 1)
-	// 		: alert("No hay stock disponible");
-	// };
+	const onDecrease = () => {
+		if (count > 0) {
+			onCountChange(count - 1);
+			setCount(count - 1);
+			setReadyToBuy(false);
+		}
+	};
 
 	return (
 		<div>

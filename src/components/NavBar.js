@@ -48,6 +48,15 @@ function NavBar(props) {
 									Plantas de exterior
 								</Link>
 							</li>
+							<li className="nav-item">
+								<Link
+									to="/cart"
+									className="nav-link active"
+									aria-current="page"
+								>
+									carrito
+								</Link>
+							</li>
 						</ul>
 					</div>
 				</div>
