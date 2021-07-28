@@ -35,7 +35,7 @@ function ItemDetail({ nombre, precio, descripcion, stock }) {
 						>
 							Agregar al carrito
 						</button>
-						<Link>
+						<Link to="/cart">
 							<button disabled={!readyToBuy}>Termina tu compra</button>
 						</Link>
 					</div>
