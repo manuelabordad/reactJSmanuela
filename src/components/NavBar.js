@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "../components/CartWidget";
+import { CartContext, useCartContext } from "../Context";
 function NavBar(props) {
+	const { cartCount } = useCartContext();
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -54,7 +56,7 @@ function NavBar(props) {
 									className="nav-link active"
 									aria-current="page"
 								>
-									carrito
+									carrito {cartCount}
 								</Link>
 							</li>
 						</ul>

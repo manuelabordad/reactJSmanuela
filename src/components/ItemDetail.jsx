@@ -3,15 +3,20 @@ import Plant from "../images/orquideaBaby.jpg";
 import { useState } from "react";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../Context";
 
 function ItemDetail({ nombre, precio, descripcion, stock }) {
 	const [readyToBuy, setReadyToBuy] = useState(false);
 	const [addCartButtonState, setAddCartButtonState] = useState(false);
+	const [cartCount, setCartCount] = useState(0);
 
 	const onCountChange = (count) => {
-		console.log("count", count);
 		setAddCartButtonState(count > 0);
+		setCartCount(count);
 	};
+
+	const { addToCart } = useCartContext();
+
 	return (
 		<div>
 			<div className="container">
@@ -31,7 +36,10 @@ function ItemDetail({ nombre, precio, descripcion, stock }) {
 						/>
 						<button
 							disabled={!addCartButtonState}
-							onClick={() => setReadyToBuy(true)}
+							onClick={() => {
+								setReadyToBuy(true);
+								addToCart(cartCount, { nombre: nombre });
+							}}
 						>
 							Agregar al carrito
 						</button>
