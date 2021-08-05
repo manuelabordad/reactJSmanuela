@@ -19,6 +19,8 @@ function ItemDetailConteiner() {
 		setTimeout(() => getItems(), 2000);
 	}, []);
 
+	console.log("produto", producto);
+
 	return (
 		<div>
 			<ItemDetail

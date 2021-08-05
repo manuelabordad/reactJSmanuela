@@ -1,3 +1,4 @@
+import { sum } from "lodash";
 import React, { useState, useContext } from "react";
 
 export const CartContext = React.createContext();
@@ -8,11 +9,11 @@ function CartProvider({ children }) {
 	const [cartItems, setCartItems] = useState([]);
 
 	const addToCart = (qty, item) => {
-		console.log("qty", qty);
 		console.log("item", item);
-
-		if (cartItems.some((product) => product.nombre === item.nombre)) {
-			console.log("entro if");
+		if (
+			cartItems &&
+			cartItems.some((product) => product.nombre === item.nombre)
+		) {
 			const copy = [...cartItems];
 			const repeteadIndex = cartItems.findIndex(
 				(product) => product.nombre === item.nombre
@@ -23,17 +24,31 @@ function CartProvider({ children }) {
 			};
 			setCartItems(copy);
 		} else {
-			console.log("entro else");
 			setCartItems([...cartItems, { ...item, qty }]);
 		}
 		setCartCount((prev) => prev + qty);
 	};
 
-	console.log("cartItemsContext", cartItems);
+	const deleteItem = (item) => {
+		const newCartItems = cartItems.filter(
+			(cartItem) => cartItem.nombre !== item.nombre
+		);
+
+		setCartCount(cartCount - item.qty);
+		setCartItems(newCartItems);
+	};
+	const totalPrice = () => {
+		console.log("total");
+		const total = sum(cartItems.map((item) => item.precio * item.qty));
+		console.log("total", total);
+		return total;
+	};
 
 	return (
 		<div>
-			<CartContext.Provider value={{ cartCount, cartItems, addToCart }}>
+			<CartContext.Provider
+				value={{ cartCount, cartItems, addToCart, deleteItem, totalPrice }}
+			>
 				{children}
 			</CartContext.Provider>
 		</div>

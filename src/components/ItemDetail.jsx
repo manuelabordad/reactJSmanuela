@@ -38,7 +38,7 @@ function ItemDetail({ nombre, precio, descripcion, stock }) {
 							disabled={!addCartButtonState}
 							onClick={() => {
 								setReadyToBuy(true);
-								addToCart(cartCount, { nombre: nombre });
+								addToCart(cartCount, { nombre: nombre, precio: precio });
 							}}
 						>
 							Agregar al carrito
