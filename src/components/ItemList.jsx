@@ -5,39 +5,35 @@ import { getFirestore } from "../firebase";
 function ItemList({ categoryId }) {
 	const [productos, setProductos] = useState([]);
 
-	// const getProductsByCategoryId = async () => {
-	// 	const dataTest = await fetch(`../product/byCategory/${categoryId}.json`);
-	// 	const responseData = await dataTest.json();
-
-	// 	setProductos(responseData);
-	// };
-	// useEffect(() => {
-	// 	setTimeout(() => getProductsByCategoryId(), 2000);
-	// }, [categoryId]);
 	useEffect(() => {
 		const firestore = getFirestore();
 		const collection = firestore.collection("productos");
-		const get = collection.get();
-		get.then((resultado) => {
-			resultado.forEach((documento) => {
-				setProductos(documento.data());
-				console.log("productosFire", productos);
+		const query = collection.get();
+		query.then((resultado) => {
+			const documentos = resultado.docs.map((doc) => {
+				return {
+					id: doc.id,
+					...doc.data(),
+				};
+				doc.data();
 			});
+			setProductos(documentos);
+			console.log("firebase", productos);
 		});
 	}, [categoryId]);
 
 	return (
 		<div>
-			{/* {productos.map((producto) => (
+			{productos.map((producto) => (
 				<Item
-					nombre={producto.nombre}
-					precio={producto.precio}
-					itemId={producto.id}
+					title={producto.title}
+					price={producto.price}
 					descripcion={producto.descripcion}
-					stock={20}
+					stock={producto.stock}
+					image={producto.image}
 					initial={1}
 				/>
-			))} */}
+			))}
 		</div>
 	);
 }
