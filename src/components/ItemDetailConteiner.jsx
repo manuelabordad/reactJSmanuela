@@ -2,34 +2,39 @@ import { useEffect, useState } from "react";
 import React from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import { getFirestore } from "../firebase";
 
 function ItemDetailConteiner() {
 	const [producto, setProducto] = useState([]);
 
 	const { id } = useParams();
 
-	const getItems = async () => {
-		const data = await fetch("../product/products.json");
-		const responseData = await data.json();
-
-		setProducto(responseData.filter((product) => product.id === id)[0]);
-	};
-
 	useEffect(() => {
-		setTimeout(() => getItems(), 2000);
+		const firestore = getFirestore();
+		const collection = firestore.collection("productos");
+		const query = collection.get();
+		query.then((resultado) => {
+			const documentos = resultado.docs.map((doc) => {
+				return {
+					id: doc.id,
+					...doc.data(),
+				};
+				doc.data();
+			});
+			setProducto(documentos);
+			console.log("firebaseDetail", producto);
+		});
 	}, []);
-
-	console.log("produto", producto);
 
 	return (
 		<div>
 			<ItemDetail
-				nombre={producto.nombre}
-				img={producto.img}
-				precio={producto.precio}
+				title={producto.title}
+				image={producto.image}
+				price={producto.price}
 				descripcion={producto.descripcion}
 				itemId={producto.id}
-				stock={20}
+				stock={producto.stock}
 				initial={1}
 			/>
 		</div>

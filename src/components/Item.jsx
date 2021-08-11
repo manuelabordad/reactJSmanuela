@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Plant from "../images/orquideaBaby.jpg";
+
 import { Link } from "react-router-dom";
 
 function Item({ title, price, id, image }) {
@@ -10,7 +10,7 @@ function Item({ title, price, id, image }) {
 		<div>
 			<div className="card" style={{ width: "18rem" }}>
 				<Link to={`/Item/${id}`}>
-					<img className="card-img-top" src={Plant} alt="Card image cap" />
+					<img className="card-img-top" src={image} alt="Card image cap" />
 				</Link>
 				<div className="card-body">
 					<h5 className="card-title">{title}</h5>

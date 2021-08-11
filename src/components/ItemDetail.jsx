@@ -5,7 +5,7 @@ import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../Context";
 
-function ItemDetail({ nombre, precio, descripcion, stock }) {
+function ItemDetail({ title, price, descripcion, stock, image }) {
 	const [readyToBuy, setReadyToBuy] = useState(false);
 	const [addCartButtonState, setAddCartButtonState] = useState(false);
 	const [cartCount, setCartCount] = useState(0);
@@ -25,12 +25,12 @@ function ItemDetail({ nombre, precio, descripcion, stock }) {
 						<img width="500px" height="500px" src={Plant} />
 					</div>
 					<div className="col">
-						<h1>{nombre}</h1> <br />
-						<h2>Precio : {precio}</h2> <br />
+						<h1>{title}</h1> <br />
+						<h2>Precio : {price}</h2> <br />
 						<p> {descripcion}</p> <br />
 						<ItemCount
 							initial={1}
-							stock={20}
+							stock={stock}
 							setReadyToBuy={setReadyToBuy}
 							onCountChange={onCountChange}
 						/>
@@ -38,7 +38,7 @@ function ItemDetail({ nombre, precio, descripcion, stock }) {
 							disabled={!addCartButtonState}
 							onClick={() => {
 								setReadyToBuy(true);
-								addToCart(cartCount, { nombre: nombre, precio: precio });
+								addToCart(cartCount, { title: title, price: price });
 							}}
 						>
 							Agregar al carrito
