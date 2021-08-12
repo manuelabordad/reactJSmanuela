@@ -8,8 +8,8 @@ function ItemList({ categoryId }) {
 	useEffect(() => {
 		const firestore = getFirestore();
 		const collection = firestore.collection("productos");
-		const query = collection.get();
-		query.then((resultado) => {
+		const productosFiltrados = collection.where("categoryId", "==", categoryId);
+		productosFiltrados.get().then((resultado) => {
 			const documentos = resultado.docs.map((doc) => {
 				return {
 					id: doc.id,
@@ -17,8 +17,7 @@ function ItemList({ categoryId }) {
 				};
 				doc.data();
 			});
-			setProductos(documentos);
-			console.log("firebase", productos);
+			console.log("docuemntos", documentos);
 		});
 	}, [categoryId]);
 
