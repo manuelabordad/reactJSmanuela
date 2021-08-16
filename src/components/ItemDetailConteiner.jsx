@@ -11,33 +11,29 @@ function ItemDetailConteiner() {
 
 	useEffect(() => {
 		const firestore = getFirestore();
-		const collection = firestore.collection("productos");
-		const query = collection.get();
-		query.then((resultado) => {
-			const documentos = resultado.docs.map((doc) => {
-				return {
-					id: doc.id,
-					...doc.data(),
-				};
-				doc.data();
+		firestore
+			.collection("productos")
+			.doc(id)
+			.get()
+			.then((resultado) => {
+				setProducto(resultado.data());
 			});
-			setProducto(documentos);
-			console.log("firebaseDetail", producto);
-		});
-	}, []);
+	}, [id]);
 
 	return (
-		<div>
-			<ItemDetail
-				title={producto.title}
-				image={producto.image}
-				price={producto.price}
-				descripcion={producto.descripcion}
-				itemId={producto.id}
-				stock={producto.stock}
-				initial={1}
-			/>
-		</div>
+		producto && (
+			<div>
+				<ItemDetail
+					title={producto.title}
+					image={producto.image}
+					price={producto.price}
+					descripcion={producto.descripcion}
+					itemId={producto.idProducto}
+					stock={producto.stock}
+					initial={1}
+				/>
+			</div>
+		)
 	);
 }
 

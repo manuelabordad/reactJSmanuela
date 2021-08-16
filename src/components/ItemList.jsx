@@ -8,7 +8,11 @@ function ItemList({ categoryId }) {
 	useEffect(() => {
 		const firestore = getFirestore();
 		const collection = firestore.collection("productos");
-		const productosFiltrados = collection.where("categoryId", "==", categoryId);
+		const productosFiltrados = collection.where(
+			"categoryId",
+			"==",
+			parseInt(categoryId)
+		);
 		productosFiltrados.get().then((resultado) => {
 			const documentos = resultado.docs.map((doc) => {
 				return {
@@ -17,7 +21,7 @@ function ItemList({ categoryId }) {
 				};
 				doc.data();
 			});
-			console.log("docuemntos", documentos);
+			setProductos(documentos);
 		});
 	}, [categoryId]);
 
@@ -30,6 +34,7 @@ function ItemList({ categoryId }) {
 					descripcion={producto.descripcion}
 					stock={producto.stock}
 					image={producto.image}
+					id={producto.id}
 					initial={1}
 				/>
 			))}

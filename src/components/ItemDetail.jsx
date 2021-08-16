@@ -1,11 +1,10 @@
 import React from "react";
-import Plant from "../images/orquideaBaby.jpg";
 import { useState } from "react";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../Context";
 
-function ItemDetail({ title, price, descripcion, stock, image }) {
+function ItemDetail({ title, price, descripcion, stock, image,  }) {
 	const [readyToBuy, setReadyToBuy] = useState(false);
 	const [addCartButtonState, setAddCartButtonState] = useState(false);
 	const [cartCount, setCartCount] = useState(0);
@@ -22,7 +21,7 @@ function ItemDetail({ title, price, descripcion, stock, image }) {
 			<div className="container">
 				<div className="row">
 					<div className="col">
-						<img width="500px" height="500px" src={Plant} />
+						<img width="500px" height="500px" src={image} />
 					</div>
 					<div className="col">
 						<h1>{title}</h1> <br />

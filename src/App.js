@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import CartProvider, { CartContext } from "./Context";
 
+
 function App() {
 	return (
 		<div>
