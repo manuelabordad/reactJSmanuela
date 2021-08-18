@@ -12,11 +12,11 @@ function CartProvider({ children }) {
 		console.log("item", item);
 		if (
 			cartItems &&
-			cartItems.some((product) => product.nombre === item.nombre)
+			cartItems.some((product) => product.title === item.title)
 		) {
 			const copy = [...cartItems];
 			const repeteadIndex = cartItems.findIndex(
-				(product) => product.nombre === item.nombre
+				(product) => product.title === item.title
 			);
 			copy[repeteadIndex] = {
 				...copy[repeteadIndex],
@@ -31,7 +31,7 @@ function CartProvider({ children }) {
 
 	const deleteItem = (item) => {
 		const newCartItems = cartItems.filter(
-			(cartItem) => cartItem.nombre !== item.nombre
+			(cartItem) => cartItem.title !== item.title
 		);
 
 		setCartCount(cartCount - item.qty);
@@ -39,7 +39,7 @@ function CartProvider({ children }) {
 	};
 	const totalPrice = () => {
 		console.log("total");
-		const total = sum(cartItems.map((item) => item.precio * item.qty));
+		const total = sum(cartItems.map((item) => item.price * item.qty));
 		console.log("total", total);
 		return total;
 	};

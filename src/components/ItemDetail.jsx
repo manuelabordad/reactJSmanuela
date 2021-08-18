@@ -4,7 +4,7 @@ import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../Context";
 
-function ItemDetail({ title, price, descripcion, stock, image,  }) {
+function ItemDetail({ title, price, descripcion, stock, image, itemId }) {
 	const [readyToBuy, setReadyToBuy] = useState(false);
 	const [addCartButtonState, setAddCartButtonState] = useState(false);
 	const [cartCount, setCartCount] = useState(0);
@@ -37,7 +37,7 @@ function ItemDetail({ title, price, descripcion, stock, image,  }) {
 							disabled={!addCartButtonState}
 							onClick={() => {
 								setReadyToBuy(true);
-								addToCart(cartCount, { title: title, price: price });
+								addToCart(cartCount, { title, price });
 							}}
 						>
 							Agregar al carrito
