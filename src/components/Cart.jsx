@@ -2,44 +2,51 @@ import React, { useState } from "react";
 import { useCartContext } from "../Context";
 import { Link } from "react-router-dom";
 import { getFirestore } from "../firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 function Cart() {
 	const { cartItems, deleteItem, totalPrice } = useCartContext();
-	const [form, setForm] = useState({ personName: "", phone: "", email: "" });
-	const [confrimacion, setConfirmacion] = useState();
+	const actualDate = firebase.firestore.Timestamp.fromDate(new Date());
+	const [form, setForm] = useState({
+		items: cartItems,
+		total: totalPrice(),
+		personName: "",
+		phone: "",
+		email: "",
+		date: actualDate,
+	});
 
 	const onChangeName = (e) => {
-		setForm({
-			personName: e.target.value,
-		});
+		setForm({ ...form, personName: e.target.value });
 	};
 	const onChangePhone = (e) => {
-		setForm({
-			phone: e.target.value,
-		});
+		setForm({ ...form, phone: e.target.value });
 	};
 	const onChangeEmail = (e) => {
-		setForm({
-			email: e.target.value,
-		});
+		setForm({ ...form, email: e.target.value });
 	};
-	const confirmarCompra = () => {
+	console.log("form", form);
+	const confirmarCompra = (e) => {
+		e.preventDefault();
+		console.log("confirm onclick");
 		const firestore = getFirestore();
 		const collection = firestore.collection("ordenes");
+
 		const query = collection.add(form);
 		query
 			.then((resultado) => {
-				setConfirmacion(resultado.id);
+				console.log("confirmacion", resultado);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	};
 
-	console.log("state", form);
 	const { personName } = form;
 	const { phone } = form;
 	const { email } = form;
+
 	return (
 		<div>
 			<h1>carrito de compras </h1>
@@ -61,7 +68,7 @@ function Cart() {
 
 			<h2>Total: {totalPrice()}</h2>
 			<form>
-				<div class="mb-3">
+				<div className="mb-3">
 					<label for="exampleInputEmail1" class="form-label">
 						Name
 					</label>
@@ -74,19 +81,18 @@ function Cart() {
 						aria-describedby="emailHelp"
 					/>
 				</div>
-				<div class="mb-3">
+				<div className="mb-3">
 					<label for="exampleInputPassword1" class="form-label">
 						Phone
 					</label>
 					<input
 						onChange={onChangePhone}
 						value={phone}
-						type="phone"
 						class="form-control"
 						id="exampleInputPassword1"
 					/>
 				</div>
-				<div class="mb-3">
+				<div className="mb-3">
 					<label for="exampleInputPassword1" class="form-label">
 						Email
 					</label>
@@ -99,7 +105,11 @@ function Cart() {
 					/>
 				</div>
 
-				<button type="submit" class="btn btn-primary" onClick={confirmarCompra}>
+				<button
+					type="submit"
+					className="btn btn-primary"
+					onClick={confirmarCompra}
+				>
 					confrimar compra
 				</button>
 			</form>
