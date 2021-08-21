@@ -7,6 +7,7 @@ export const useCartContext = () => useContext(CartContext);
 function CartProvider({ children }) {
 	const [cartCount, setCartCount] = useState(0);
 	const [cartItems, setCartItems] = useState([]);
+	const [purchasesIds, setPurchasesIds] = useState([]);
 
 	const addToCart = (qty, item) => {
 		console.log("item", item);
@@ -29,6 +30,19 @@ function CartProvider({ children }) {
 		setCartCount((prev) => prev + qty);
 	};
 
+	const addPurchase = (item) => {
+		purchasesIds.push(item);
+		console.log("itemp", item);
+		console.log("itemp", item);
+		setPurchasesIds(purchasesIds);
+	};
+
+	const deleteAllItems = () => {
+		const newCartItems = [];
+		setCartCount(0);
+		setCartItems(newCartItems);
+	};
+
 	const deleteItem = (item) => {
 		const newCartItems = cartItems.filter(
 			(cartItem) => cartItem.title !== item.title
@@ -37,6 +51,7 @@ function CartProvider({ children }) {
 		setCartCount(cartCount - item.qty);
 		setCartItems(newCartItems);
 	};
+
 	const totalPrice = () => {
 		console.log("total");
 		const total = sum(cartItems.map((item) => item.price * item.qty));
@@ -47,7 +62,16 @@ function CartProvider({ children }) {
 	return (
 		<div>
 			<CartContext.Provider
-				value={{ cartCount, cartItems, addToCart, deleteItem, totalPrice }}
+				value={{
+					cartCount,
+					cartItems,
+					purchasesIds,
+					addToCart,
+					deleteItem,
+					totalPrice,
+					addPurchase,
+					deleteAllItems,
+				}}
 			>
 				{children}
 			</CartContext.Provider>
