@@ -46,7 +46,7 @@ function Cart() {
 		const query = collection.add(form);
 		query
 			.then(({ id }) => {
-				alert("tu compra ha sido satisfactoria" + id);
+				alert("tu compra ha sido satisfactoria");
 				//setConfirmed(true);
 				console.log("id", id);
 				addPurchase(id);

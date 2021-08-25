@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Item from "../components/Item";
 import { getFirestore } from "../firebase";
+import "../../src/itemListCont.css";
 
 function ItemList({ categoryId }) {
 	const [productos, setProductos] = useState([]);
@@ -8,11 +9,9 @@ function ItemList({ categoryId }) {
 	useEffect(() => {
 		const firestore = getFirestore();
 		const collection = firestore.collection("productos");
-		const productosFiltrados = collection.where(
-			"categoryId",
-			"==",
-			parseInt(categoryId)
-		);
+		const productosFiltrados = categoryId
+			? collection.where("categoryId", "==", parseInt(categoryId))
+			: collection;
 		productosFiltrados.get().then((resultado) => {
 			const documentos = resultado.docs.map((doc) => {
 				return {
@@ -26,7 +25,7 @@ function ItemList({ categoryId }) {
 	}, [categoryId]);
 
 	return (
-		<div>
+		<div className="display">
 			{productos.map((producto) => (
 				<Item
 					title={producto.title}

@@ -1,7 +1,8 @@
 import React from "react";
 import icono from "../images/iconoFlor.png";
+
 import { Link } from "react-router-dom";
-function CartWidget(props) {
+function CartWidget() {
 	return (
 		<div>
 			<Link to="/">
